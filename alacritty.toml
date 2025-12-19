@@ -1,0 +1,14 @@
+[colors.cursor]
+text = "#000000"    # couleur du texte sous le curseur
+cursor = "#89B4FA"  # couleur du curseur
+
+[font]
+size = 15.0
+
+
+[shell]
+program = "/bin/bash"
+args = [
+  "-lc",
+  "sleep 0.2; wmctrl -r Alacritty -b add,fullscreen; exec bash"
+]
