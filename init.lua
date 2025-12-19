@@ -267,7 +267,18 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+vim.opt.shada:append('%')
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    local row = vim.fn.line([['"]])
+    local last = vim.fn.line("$")
+    if row > 0 and row <= last then
+      vim.cmd([[normal! g`"]])
+    end
+  end,
+})
 
 
 
