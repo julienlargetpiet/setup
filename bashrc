@@ -128,5 +128,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+pgrep xbanish >/dev/null || xbanish &
 
 
