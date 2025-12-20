@@ -303,5 +303,11 @@ npairs.add_rules({
     end),
 })
 
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePre" }, {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! %s/\t/    /ge")
+  end,
+})
 
 
