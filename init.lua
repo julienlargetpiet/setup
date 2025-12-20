@@ -61,6 +61,11 @@ require("lazy").setup({
     end,
   },
 
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+  },
+
 })
 
 -- --------------------------------------------------
@@ -278,6 +283,24 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       vim.cmd([[normal! g`"]])
     end
   end,
+})
+
+
+vim.opt.matchpairs:append("<:>")
+
+local npairs = require("nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
+
+npairs.setup({})
+
+npairs.add_rules({
+  Rule("<", ">")
+    :with_pair(function(opts)
+      return vim.tbl_contains(
+        { "rust", "cpp", "c", "haskell" },
+        vim.bo.filetype
+      )
+    end),
 })
 
 
